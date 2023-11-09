@@ -1,0 +1,20 @@
+{
+  "name": "elle-l-bot-23.11",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "export NODE_ENV=dev&& nodemon app.js",
+    "experimental": "export NODE_ENV=experimental&& nodemon app.js",
+    "aidev": "export NODE_ENV=aidev&& nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/bolt": "^3.14.0",
+    "airtable": "^0.12.2",
+    "dotenv": "^16.3.1",
+    "openai": "^4.12.4"
+  }
+}
