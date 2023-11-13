@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "elle": "./cli.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "export NODE_ENV=dev&& nodemon app.js",
@@ -14,7 +17,11 @@
   "dependencies": {
     "@slack/bolt": "^3.14.0",
     "airtable": "^0.12.2",
+    "clear": "^0.1.0",
     "dotenv": "^16.3.1",
-    "openai": "^4.12.4"
+    "figlet": "^1.7.0",
+    "midi": "^2.0.0",
+    "openai": "^4.12.4",
+    "yargs": "^17.7.2"
   }
 }
