@@ -2,6 +2,9 @@ const { llog } = require('../../utils/ll-utilities');
 const elleResponseV1 = require('../personae/elle/elle-response-v1');
 const elleResponseV2 = require('../personae/elle/elle-response-v2');
 
+const testBots = {
+    elle_23_11: "C065C4G6NDC"
+}
 
 exports.testing = async ({ message, say }) => {
     // say() sends a message to the channel where the event was triggered
