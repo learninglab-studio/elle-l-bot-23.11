@@ -6,6 +6,11 @@ const testBots = {
     elle_23_11: "C065C4G6NDC"
 }
 
+const authorizedUsers = [
+    "U0HTZUUP4",
+    "U02655ZC50U"
+]
+
 exports.testing = async ({ message, say }) => {
     // say() sends a message to the channel where the event was triggered
     await say(`the bot is running, <@${message.user}>!`);
@@ -17,14 +22,18 @@ exports.parseAll = async ({ client, message, say }) => {
         llog.blue(`handling message because ${message.channel} is one of \n${JSON.stringify(BOT_CONFIG.channels, null, 4)}`)
         llog.yellow(message)
     } else if ( message.channel_type == "im" ) {
-        llog.magenta(`handling message because ${message.channel} is a DM`)
-        llog.yellow(message)
-        let result = await client.conversations.history({channel: message.channel, limit: 10})
-        llog.magenta(result)
-        // let openAiResult = await elleResponseV1({ text: message.text, messages: result.messages });
-        let openAiResult = await elleResponseV2({ text: message.text, messages: result.messages });
-        llog.magenta(openAiResult)
-        let slackResult = await say(openAiResult.choices[0].message.content);
+        if (authorizedUsers.includes(message.user)) {
+            llog.magenta(`handling message because ${message.channel} is a DM`)
+            llog.yellow(message)
+            let result = await client.conversations.history({channel: message.channel, limit: 10})
+            llog.magenta(result)
+            // let openAiResult = await elleResponseV1({ text: message.text, messages: result.messages });
+            let openAiResult = await elleResponseV2({ text: message.text, messages: result.messages });
+            llog.magenta(openAiResult)
+            let slackResult = await say(openAiResult.choices[0].message.content);
+        } else {
+            let slackResult = await say("Sorry, I'm not authorized to talk to you just yet. <@U0HTZUUP4> is rate-limiting my activities right now. You can ask him to add you if you want.");
+        }
     } else if (message.channel == "C060Z16VA4S") {
         llog.blue(`handling message in hackmd-to-pdf channel`, message);
         // if (message.blocks && message)
