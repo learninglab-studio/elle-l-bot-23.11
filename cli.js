@@ -6,7 +6,7 @@ const { llog } = require('./src/utils/ll-utilities')
 // const { transcribeFile } = require('./src/ll-bots/transcription-bot')
 // const hackmd2pdf = require('./src/utils/ll-hackmd-tools/hackmd-to-pdf')
 // const { finetune } = require('./src/ll-bots/open-ai-bot')
-const { logMidi } = require('./src/utils/ll-midi-tools')
+// const { logMidi } = require('./src/utils/ll-midi-tools')
 require("dotenv").config({ path: __dirname + `/.env.cli` });
 
 
@@ -31,7 +31,7 @@ console.log("launching it.")
 
 if (yargs.logMidi) {
     llog.magenta(`going to log midi input`);
-    logMidi();
+    // logMidi();
 } else {
     console.log(`sorry, you didn't enter a recognized command.`)
 }
